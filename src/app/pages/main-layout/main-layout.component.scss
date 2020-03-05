@@ -1,0 +1,29 @@
+@import "./src/styles.pallete.scss";
+
+.layout-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  .page-content {
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+}
+
+.top-bar {
+  width: 100%;
+  height: 68px;
+  background: linear-gradient(to right, $teget-dark, $teget);
+  box-shadow: 0 0 10px 0 rgba(black, 0.4);
+
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    color: $light;
+  }
+}
