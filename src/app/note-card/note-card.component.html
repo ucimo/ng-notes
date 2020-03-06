@@ -1,13 +1,10 @@
 <div #container class="note-card">
   <div class="note-card--content">
-    <div class="note-card--title">Card title</div>
+    <div class="note-card--title">{{ title }}</div>
 
-    <div #body class="note-card--body" (click)="consoleBody()">
-      <span #bodyText>
-        Body. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-        rerum dolorum error evenie t facere, maxime i llo, velit porro omnis
-        incidunt delectus, necessitatibus iste. Minima enim quis recusandae id
-        placeat voluptatum!
+    <div #bodyContainer class="note-card--body" (click)="consoleBody()">
+      <span>
+        {{ body }}
       </span>
 
       <div #textFadeout class="note-card--body--text-fadeout"></div>
