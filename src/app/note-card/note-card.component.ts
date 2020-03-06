@@ -18,28 +18,34 @@ export class NoteCardComponent implements OnInit, AfterViewInit {
   faWindowClose = faWindowClose;
 
   @ViewChild("body") body: ElementRef<HTMLElement>;
-  @ViewChild("bodyText") bodyText: ElementRef<HTMLElement>;
+  @ViewChild("textFadeout") textFadeout: ElementRef<HTMLElement>;
 
   constructor(private renderer: Renderer2) {}
 
   ngOnInit() {
-    // let style = window.getComputedStyle(this.cardBody.nativeElement, null);
-    // // let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
-    // // let scrollableHeight = parseInt(style.getPropertyValue("scrollHeight"), 10);
-    // console.log(style, "body  text");
-    // console.log(viewableHeight, scrollableHeight);
-  }
-  ngAfterViewInit() {
-    // let bodyStyle = window.getComputedStyle(this.body.nativeElement, null);
+    // let style = window.getComputedStyle(this.body.nativeElement, null);
     // let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
     // let scrollableHeight = parseInt(style.getPropertyValue("scrollHeight"), 10);
-
-    console.log(this.body.nativeElement.style.height, "body  h");
+    // console.log(style, "body  text");
+    // console.log(viewableHeight, scrollableHeight);
+    // console.log(
+    //   this.body.nativeElement.offsetHeight,
+    //   "on init body  offsetHeight",
+    //   this.body.nativeElement.scrollHeight,
+    //   "on init body  scrollHeight"
+    // );
+  }
+  ngAfterViewInit() {
+    const { offsetHeight, scrollHeight } = this.body.nativeElement;
+    console.log(offsetHeight, scrollHeight);
+    if (offsetHeight > scrollHeight) {
+      // if there is no text overflow
+      this.renderer.setStyle(this.textFadeout.nativeElement, "display", "none");
+    }
   }
 
   consoleBody() {
-    console.log(this.body, "body  text");
-    console.log(this.body.nativeElement.scrollHeight, "body  scrollHeight");
-    console.log(this.body.nativeElement.offsetHeight, "body  offsetHeight");
+    const { offsetHeight, scrollHeight } = this.body.nativeElement;
+    console.log(offsetHeight, scrollHeight);
   }
 }
