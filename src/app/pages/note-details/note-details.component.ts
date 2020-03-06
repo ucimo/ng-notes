@@ -37,21 +37,23 @@ export class NoteDetailsComponent implements OnInit {
   }
 
   onSubmit(ngForm: NgForm) {
-    this.loading = true;
-    setTimeout(() => {
-      console.log("noteForm", this.noteForm);
-      // add to sevice
-      if (this.editMode) {
-        this.notesService.edit(this.id, ngForm.form.value);
-        // toastr
-      } else {
-        this.notesService.add(ngForm.form.value);
-        // toastr
-      }
+    if (ngForm.valid) {
+      this.loading = true;
+      setTimeout(() => {
+        console.log("noteForm", this.noteForm);
+        // add to sevice
+        if (this.editMode) {
+          this.notesService.edit(this.id, ngForm.form.value);
+          // toastr
+        } else {
+          this.notesService.add(ngForm.form.value);
+          // toastr
+        }
 
-      this.loading = false;
-      this.router.navigate(["/"]);
-    }, Math.floor(Math.random() * 2000));
+        this.loading = false;
+        this.router.navigate(["/"]);
+      }, Math.floor(Math.random() * 2000));
+    }
   }
 
   onCancel() {

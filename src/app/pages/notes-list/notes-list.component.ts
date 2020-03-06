@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -10,7 +10,7 @@ import { NotesService } from "src/app/shared/notes.service";
   templateUrl: "./notes-list.component.html",
   styleUrls: ["./notes-list.component.scss"]
 })
-export class NotesListComponent implements OnInit {
+export class NotesListComponent implements OnInit, OnDestroy {
   faSearch = faSearch;
 
   notes: Note[] = [];
@@ -28,5 +28,9 @@ export class NotesListComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.noteSubscription.unsubscribe();
   }
 }
