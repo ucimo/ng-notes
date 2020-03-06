@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Note } from "src/app/shared/note.model";
+import { NotesService } from "src/app/shared/notes.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-notes-list",
@@ -10,7 +13,20 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 export class NotesListComponent implements OnInit {
   faSearch = faSearch;
 
-  constructor() {}
+  notes: Note[] = [];
+  noteSubscription: Subscription;
 
-  ngOnInit(): void {}
+  constructor(private notesService: NotesService) {}
+
+  ngOnInit(): void {
+    this.notes = this.notesService.getNotes();
+    this.noteSubscription = this.notesService.notesChanged.subscribe(
+      (notes: Note[]) => {
+        this.notes = notes;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
 }

@@ -1,8 +1,8 @@
 <div #container class="note-card">
-  <div class="note-card--content">
+  <div class="note-card--content" (click)="onManage()">
     <div class="note-card--title">{{ title }}</div>
 
-    <div #bodyContainer class="note-card--body" (click)="consoleBody()">
+    <div #bodyContainer class="note-card--body">
       <span>
         {{ body }}
       </span>
@@ -11,5 +11,7 @@
     </div>
   </div>
 
-  <div class="x-button"><fa-icon [icon]="faWindowClose"> </fa-icon></div>
+  <div class="x-button">
+    <fa-icon [icon]="faWindowClose" (click)="onDelete()"> </fa-icon>
+  </div>
 </div>

@@ -9,6 +9,8 @@ import {
 } from "@angular/core";
 
 import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
+import { Router } from "@angular/router";
+import { NotesService } from "../shared/notes.service";
 
 @Component({
   selector: "app-note-card",
@@ -20,11 +22,16 @@ export class NoteCardComponent implements OnInit, AfterViewInit {
 
   @Input() title: string;
   @Input() body: string;
+  @Input() id: number;
 
   @ViewChild("bodyContainer") bodyContainer: ElementRef<HTMLElement>;
   @ViewChild("textFadeout") textFadeout: ElementRef<HTMLElement>;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private router: Router,
+    private notesService: NotesService
+  ) {}
 
   ngOnInit() {
     // let style = window.getComputedStyle(this.bodyContainer.nativeElement, null);
@@ -47,8 +54,11 @@ export class NoteCardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  consoleBody() {
-    const { offsetHeight, scrollHeight } = this.bodyContainer.nativeElement;
-    console.log(offsetHeight, scrollHeight);
+  onManage() {
+    this.router.navigate(["/edit/", this.id]);
+  }
+
+  onDelete() {
+    this.notesService.delete(this.id);
   }
 }
