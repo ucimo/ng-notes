@@ -1,6 +1,23 @@
 <div class="layout-box">
   <div class="top-bar">
-    <h1 class="title">NG Notes</h1>
+    <h1 class="title title-white" routerLink="/">NG Notes</h1>
+
+    <div class="icon-container">
+      <div
+        class="icon edit title-white"
+        routerLink="/edit"
+        routerLinkActive="active"
+      >
+        <fa-icon [icon]="faWrench"></fa-icon>
+      </div>
+      <div
+        class="icon new title-white"
+        routerLink="/new"
+        routerLinkActive="active"
+      >
+        <fa-icon [icon]="faFileMedical"></fa-icon>
+      </div>
+    </div>
   </div>
 
   <div class="page-content">

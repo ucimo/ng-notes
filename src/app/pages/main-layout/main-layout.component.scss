@@ -22,8 +22,54 @@
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
+}
 
-  h1 {
-    color: $light;
+.title-white {
+  color: $light;
+  margin: 0;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-left: 1.5em;
+
+  .icon {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    width: 100%;
+  }
+
+  .edit {
+    cursor: none;
+    pointer-events: none;
+    padding-left: 0.5em;
+    transform: translateY(-200px);
+    transition: transform 500ms;
+    &.active {
+      transform: translateY(-50%);
+    }
+  }
+
+  .new {
+    opacity: 0.7;
+    padding-left: 0.5em;
+    transition: transform 500ms, opacity 100ms;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .edit.active + .new {
+    transform: translateY(-200px);
   }
 }

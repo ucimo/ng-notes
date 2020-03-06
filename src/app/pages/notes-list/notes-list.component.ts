@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Note } from "src/app/shared/note.model";
 import { NotesService } from "src/app/shared/notes.service";
-import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-notes-list",

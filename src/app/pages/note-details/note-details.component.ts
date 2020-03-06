@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { Note } from "src/app/shared/note.model";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { NotesService } from "src/app/shared/notes.service";
 
