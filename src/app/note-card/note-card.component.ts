@@ -8,7 +8,7 @@ import {
   Input
 } from "@angular/core";
 
-import { faWindowClose } from "@fortawesome/free-regular-svg-icons";
+import { faWindowClose } from "@fortawesome/free-solid-svg-icons";
 import { Router } from "@angular/router";
 import { NotesService } from "../shared/notes.service";
 
@@ -31,7 +31,7 @@ export class NoteCardComponent implements OnInit, AfterViewInit {
     private renderer: Renderer2,
     private router: Router,
     private notesService: NotesService
-  ) {}
+  ) { }
 
   ngOnInit() {
     // let style = window.getComputedStyle(this.bodyContainer.nativeElement, null);
