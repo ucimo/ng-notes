@@ -3,7 +3,14 @@
     <div class="field">
       <label class="label">Title</label>
       <div class="control">
-        <input name="title" required ngModel type="text" class="input" />
+        <input
+          name="title"
+          required
+          ngModel
+          type="text"
+          class="input"
+          [class.is-danger]="noteForm.touched && !noteForm.valid"
+        />
       </div>
     </div>
     <br />
@@ -27,6 +34,7 @@
           type="submit"
           [class.is-loading]="loading"
           class="button is-success "
+          [disabled]="!noteForm.valid"
         >
           Save
         </button>

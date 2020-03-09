@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
 import { Router, ActivatedRoute, Params } from "@angular/router";
+import { NgForm } from "@angular/forms";
+
 import { NotesService } from "src/app/shared/notes.service";
 
 @Component({
@@ -36,17 +37,17 @@ export class NoteDetailsComponent implements OnInit {
     }
   }
 
-  onSubmit(ngForm: NgForm) {
-    if (ngForm.valid) {
+  onSubmit(form: NgForm) {
+    if (form.valid) {
       this.loading = true;
       setTimeout(() => {
         console.log("noteForm", this.noteForm);
-        // add to sevice
+        // add/edit to sevice
         if (this.editMode) {
-          this.notesService.edit(this.id, ngForm.form.value);
+          this.notesService.edit(this.id, form.value);
           // toastr
         } else {
-          this.notesService.add(ngForm.form.value);
+          this.notesService.add(form.value);
           // toastr
         }
 

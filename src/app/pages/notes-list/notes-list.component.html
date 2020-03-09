@@ -8,12 +8,13 @@
     </div>
   </div>
 
-  <div class="notes-list">
+  <div class="notes-list" [@listAnim]>
     <app-note-card
       *ngFor="let note of notes"
       [id]="note.id"
       [title]="note.title"
       [body]="note.body"
+      [@itemAnim]
     ></app-note-card>
   </div>
 </div>
