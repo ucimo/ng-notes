@@ -73,3 +73,13 @@
     transform: translateY(-200px);
   }
 }
+
+.notes-footer {
+  background: $light;
+  width: 100%;
+  text-align: center;
+  p {
+    background: transparent;
+    padding: 0.5em 0;
+  }
+}

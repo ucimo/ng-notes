@@ -8,14 +8,18 @@ import { Subject } from "rxjs";
 export class NotesService {
   public notesChanged = new Subject<Note[]>();
   private notes: Note[] = [
-    new Note("Prva stavka", "Malo sadrzaja."),
+    new Note("First note", "Little content, no text fadeout."),
     new Note(
-      "Drva stavka",
-      "Osrednje sadrzaja. Aliquid, optio eligendi! Quisquam voluptatem tempore dolore impedit sapiente excepturi doloremque aliquam repellendus! Explicabo ab placeat inventore vel quo, odit magni perferendis."
+      "Second note",
+      "Delete me! Observe the angular animation's beauty."
     ),
     new Note(
-      "Treca stavka",
-      "Vise sadrzaja. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, optio eligendi! Quisquam voluptatem tempore dolore impedit sapiente excepturi doloremque aliquam repellendus! Explicabo ab placeat inventore vel quo, odit magni perferendis."
+      "Third note",
+      "When creating a new note, save button has a fake loading in order to provide 'waiting for server' feel."
+    ),
+    new Note(
+      "Fourth note",
+      "Bigger content, fadeout applied. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid, optio eligendi! Quisquam voluptatem tempore dolore impedit sapiente excepturi doloremque aliquam repellendus! Explicabo ab placeat inventore vel quo, odit magni perferendis."
     )
   ];
 

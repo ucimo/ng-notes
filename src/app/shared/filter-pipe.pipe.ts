@@ -9,9 +9,10 @@ export class FilterPipePipe implements PipeTransform {
     if (!notes || !uniqueTerms) {
       return notes;
     }
-    return notes.filter(note => {
+
+    let filteredNotes = notes.filter(note => {
       for (let term of uniqueTerms) {
-        // if this note DOESN'T include any of unique terms
+        // if this note DOESN'T include ANY (even just one) of unique terms
         if (
           !(
             note.title.toLowerCase().includes(term) ||
@@ -25,5 +26,7 @@ export class FilterPipePipe implements PipeTransform {
       }
       return true;
     });
+
+    return filteredNotes;
   }
 }
