@@ -1,7 +1,12 @@
 <div class="main-container">
   <div class="search-bar-container">
     <div class="control has-icons-left has-icons-right">
-      <input class="input" type="txt" placeholder="Search" />
+      <input
+        class="input"
+        type="txt"
+        placeholder="Search"
+        (keyup)="filter($event.target.value)"
+      />
       <span class="icon is-small is-left">
         <fa-icon [icon]="faSearch"></fa-icon>
       </span>
@@ -10,7 +15,7 @@
 
   <div class="notes-list" [@listAnim]>
     <app-note-card
-      *ngFor="let note of notes"
+      *ngFor="let note of notes | filterPipe: uniqueFilterTerms"
       [id]="note.id"
       [title]="note.title"
       [body]="note.body"

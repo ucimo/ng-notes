@@ -17,6 +17,11 @@ import { NotesService } from "src/app/shared/notes.service";
   selector: "app-notes-list",
   templateUrl: "./notes-list.component.html",
   styleUrls: ["./notes-list.component.scss"],
+
+  ///////////////////////////////////////
+  //  component ANIMATION
+  ///////////////////////////////////////
+
   animations: [
     trigger("itemAnim", [
       // entry animation
@@ -78,8 +83,8 @@ import { NotesService } from "src/app/shared/notes.service";
     trigger("listAnim", [
       // from any state to any state
       transition("* => *", [
-        // :enter is like a pseudo element, so it is applied on all entering el.
         query(
+          // :enter is like a pseudo element, so it is applied on all entering el.
           ":enter",
           [
             style({
@@ -94,11 +99,16 @@ import { NotesService } from "src/app/shared/notes.service";
     ])
   ]
 })
+
+///////////////////////////////////////
+//  component LOGIC
+///////////////////////////////////////
 export class NotesListComponent implements OnInit, OnDestroy {
   faSearch = faSearch;
 
   notes: Note[] = [];
   noteSubscription: Subscription;
+  uniqueFilterTerms: any = [];
 
   constructor(private notesService: NotesService) {}
 
@@ -112,6 +122,20 @@ export class NotesListComponent implements OnInit, OnDestroy {
         console.log(err);
       }
     );
+  }
+
+  filter(query: string) {
+    query = query.toLocaleLowerCase().trim();
+    // split up the search query into individual words
+    let terms: string[] = query.split(" ");
+    // remove duplicate terms, by adding array items to a set
+    let uniqueFilterTerms = new Set<string>();
+
+    // set by definition doesn't allow duplicate values
+    terms.forEach(term => uniqueFilterTerms.add(term));
+
+    // use uniqueTerm to filter out notes with pipe
+    this.uniqueFilterTerms = uniqueFilterTerms;
   }
 
   ngOnDestroy() {
