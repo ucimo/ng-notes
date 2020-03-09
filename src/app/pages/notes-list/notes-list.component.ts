@@ -124,7 +124,7 @@ export class NotesListComponent implements OnInit, OnDestroy {
     );
   }
 
-  filter(query: string) {
+  getFilteringTerms(query: string) {
     query = query.toLocaleLowerCase().trim();
     // split up the search query into individual words
     let terms: string[] = query.split(" ");

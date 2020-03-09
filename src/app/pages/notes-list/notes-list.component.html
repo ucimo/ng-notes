@@ -5,7 +5,7 @@
         class="input"
         type="txt"
         placeholder="Search"
-        (keyup)="filter($event.target.value)"
+        (keyup)="getFilteringTerms($event.target.value)"
       />
       <span class="icon is-small is-left">
         <fa-icon [icon]="faSearch"></fa-icon>
