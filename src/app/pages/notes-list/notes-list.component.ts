@@ -113,6 +113,7 @@ export class NotesListComponent implements OnInit, OnDestroy {
   constructor(private notesService: NotesService) {}
 
   ngOnInit(): void {
+    this.notesService.checkLocalStorage();
     this.notes = this.notesService.getNotes();
     this.noteSubscription = this.notesService.notesChanged.subscribe(
       (notes: Note[]) => {
