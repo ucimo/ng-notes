@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   ViewChild,
   ElementRef,
   Renderer2,
@@ -17,7 +16,7 @@ import { NotesService } from "../shared/notes.service";
   templateUrl: "./note-card.component.html",
   styleUrls: ["./note-card.component.scss"]
 })
-export class NoteCardComponent implements OnInit, AfterViewInit {
+export class NoteCardComponent implements AfterViewInit {
   faWindowClose = faWindowClose;
 
   @Input() title: string;
@@ -33,19 +32,6 @@ export class NoteCardComponent implements OnInit, AfterViewInit {
     private notesService: NotesService
   ) { }
 
-  ngOnInit() {
-    // let style = window.getComputedStyle(this.bodyContainer.nativeElement, null);
-    // let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
-    // let scrollableHeight = parseInt(style.getPropertyValue("scrollHeight"), 10);
-    // console.log(style, "bodyContainer  text");
-    // console.log(viewableHeight, scrollableHeight);
-    // const { offsetHeight, scrollHeight } = this.bodyContainer.nativeElement;
-    // console.log(offsetHeight, scrollHeight);
-    // if (offsetHeight >= scrollHeight) {
-    //   // if there is no text overflow
-    //   this.renderer.setStyle(this.textFadeout.nativeElement, "display", "none");
-    // }
-  }
   ngAfterViewInit() {
     const { offsetHeight, scrollHeight } = this.bodyContainer.nativeElement;
     if (offsetHeight >= scrollHeight) {

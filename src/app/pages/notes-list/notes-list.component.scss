@@ -1,9 +1,13 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  max-width: 500px;
   margin: auto;
   padding-top: 50px;
+  max-width: calc(500px - 25px);
+  @media (max-width: 500px){
+    padding-left: 1em;
+    padding-right: 1em;
+  }
 }
 
 .notes-list {

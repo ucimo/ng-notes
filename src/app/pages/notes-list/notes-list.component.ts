@@ -33,14 +33,20 @@ import { NotesService } from "src/app/shared/notes.service";
           opacity: 0,
           transform: "scale(0.85)",
           marginBottom: 0,
-          padding: 0 // we might need to 'spread' (top,left...) padding for some browsers
+          paddingLeft: 0,
+          paddingRight: 0,
+          paddingTop: 0,
+          paddingBottom: 0 // we need to 'spread' (top,left...) padding for some browsers (Firefox)
         }),
         // animating spacing
         animate(
           "50ms",
           style({
             height: "*",
-            padding: "*"
+            paddingLeft: "*",
+            paddingRight: "*",
+            paddingTop: "*",
+            paddingBottom:"*"
           })
         ),
         animate(200)
@@ -74,7 +80,10 @@ import { NotesService } from "src/app/shared/notes.service";
           style({
             height: 0,
             marginBottom: 0,
-            padding: 0
+            paddingLeft: 0,
+            paddingRight: 0,
+            paddingTop: 0,
+            paddingBottom: 0 
           })
         )
       ])
